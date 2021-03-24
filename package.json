@@ -1,0 +1,21 @@
+{
+  "name": "testchatapp",
+  "version": "1.0.0",
+  "description": "real time bidirectional chat application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chat",
+    "real-time",
+    "social",
+    "communication"
+  ],
+  "author": "4shw4n1",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
+  }
+}

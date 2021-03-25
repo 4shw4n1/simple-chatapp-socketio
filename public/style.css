@@ -1,46 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
 body { 
     margin: 0; 
     padding-bottom: 3rem; 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-}
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /*background-image: linear-gradient(#FBAB7E, #F7CE68);
+*/}
 #top-banner {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-size: 30px;
+}
+#top-banner #heading {
+    font-family: 'Kaushan Script', cursive;
+    padding: 10px;
 }
 #top-left {
+    padding: 8px;
+    margin: 10px;
+    font-size: 17px;
+    position: absolute;  
     right: 0px;
+    width: fit-content;
+    border-radius: 5px;
 }
 .form { 
     background: rgba(0, 0, 0, 0.15); 
     padding: 0.25rem; 
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    right: 0; 
-    display: flex; 
+    margin: 8px;
     height: 3rem; 
-    box-sizing: border-box; 
+    position: fixed;
+    display: flex; 
+    box-sizing: border-box;
+    left: 0;
+    right: 0; 
+    bottom: 0;
+    width: 100%;
     backdrop-filter: blur(10px); 
 }
 #input { 
-    border: none; 
+    background-color: transparent;
+    color: #000000;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #000000 1px;
     padding: 0 1rem; 
     flex-grow: 1; 
-    border-radius: 2rem; 
     margin: 0.25rem; 
-}
+}/*
 #input:focus { 
     outline: none; 
-}
-#input:hover {
-    background-color: #ccc;
+}*/
+#input:focus {
+    background-color: #ccc;/*
+    -webkit-box-shadow:0 0 5px #666 inset;
+    -moz-box-shadow:0 0 5px #666 inset;
+    box-shadow:0 0 5px #666 inset;*/
 }
 
 button { 
-    background: rgb(31, 57, 206); 
+    background: #1e7f97; 
     border: none; 
+    font-size: 20px;
     padding: 0 1rem; 
     margin: 0.25rem; 
     border-radius: 3px; 
@@ -51,16 +77,40 @@ button {
 
 #messages { 
     list-style-type: none; 
-    margin: 0; 
+    margin: 5px; 
     padding: 0; 
 }
 #messages > li { 
-    padding: 0.5rem 1rem; 
+    padding: 0.5rem 1rem;
+    margin: 3px; 
+    width: fit-content;
+    border-radius: 500px;
+}
+.nym {
+    font-size: 1rem;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+.textMsg {
+    font-size: 1.1rem;;
 }
 .myMsg {
-    background-color: aqua;
+    background-color: rgb(203, 238, 238);
+    color: rgb(38, 80, 172);
+    position: relative;
+    right: 0px;
 }
 .other {
-    background-color: rgb(99, 211, 155);
+    background-color: rgb(99, 141, 138);
+    color: #fff;
 }
     
+.red {
+    color: white;
+    background-color: rgb(170, 67, 67);
+}
+.green {
+    color: white;
+    background-color: darkgreen;
+}

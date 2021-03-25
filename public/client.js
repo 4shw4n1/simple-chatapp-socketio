@@ -21,20 +21,30 @@ btn.addEventListener('click', function() {
 //Listen for incoming messages
 socket.on('client message', function(data) {
     var item = document.createElement('li');
+    var pseudonym = document.createElement('div');
+    pseudonym.classList.add('nym');
+    var textMsg = document.createElement('div');
+    textMsg.classList.add('textMsg');
     if(data.name == username) {
-        item.textContent = `You : ${data.message}`;
+        pseudonym.textContent = `You`;
+        textMsg.textContent = data.message;
         item.classList.add('myMsg');
     }
     else {
-        item.textContent = `${data.name} : ${data.message}`;
+        pseudonym.textContent = data.name;
+        textMsg.textContent = data.message;
         item.classList.add('other');
     }
     messages.appendChild(item);
+    item.appendChild(pseudonym);
+    item.appendChild(textMsg);
     window.scrollTo(0, document.body.scrollHeight);
 });
 
 //For clients
 socket.on('client-no', function(data) {
     people.textContent = `Online: ${data.number}`;
+    if(data.number == 1) people.classList.add('red');
+    else people.classList.add('green');
     console.log('Updated client info!');
 })

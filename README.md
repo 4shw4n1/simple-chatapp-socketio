@@ -31,7 +31,7 @@ The server runs at port 4000 i.e. http://localhost/4000 or http://127.0.0.1/4000
 ## Next Step
 Open localhost:4000 in your browser.  
 **Features:**  
-=> Uniuqe name for all chat participants (pings them to change name if they use an alreday used name)  
+=> Uniuqe name for all chat participants (pings them to change name if they use an already used name)  
 => Displays 'entered the chat' and 'left the chat' on respective events  
 => Shows the currently active users and updates it in case of new connections and disconnections  
 

@@ -4,14 +4,24 @@ body {
     margin: 0; 
     padding-bottom: 3rem; 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /*background-image: linear-gradient(#FBAB7E, #F7CE68);
-*/}
+    background: rgb(45,91,102);
+    background: repeating-linear-gradient(180deg, rgb(106, 159, 172) 0%, rgb(178, 207, 219) 50%, rgb(106, 159, 172) 100%);
+    min-height: 100vh;
+}
 #top-banner {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    height: 75px;
+    color: antiquewhite;
     justify-content: center;
     align-items: center;
     font-size: 30px;
+}
+#top-banner .code {
+    font-size: 15px;
+}
+#top-banner .code a{
+    cursor: pointer;
 }
 #top-banner #heading {
     font-family: 'Kaushan Script', cursive;
@@ -19,17 +29,16 @@ body {
 }
 #top-left {
     padding: 8px;
-    margin: 10px;
-    font-size: 17px;
-    position: absolute;  
-    right: 0px;
+    margin: 2px;
+    font-size: 15px;
     width: fit-content;
     border-radius: 5px;
 }
+
 .form { 
     background: rgba(0, 0, 0, 0.15); 
     padding: 0.25rem; 
-    margin: 8px;
+    margin: 0px;
     height: 3rem; 
     position: fixed;
     display: flex; 
@@ -52,15 +61,11 @@ body {
     padding: 0 1rem; 
     flex-grow: 1; 
     margin: 0.25rem; 
-}/*
-#input:focus { 
-    outline: none; 
-}*/
+}
+
 #input:focus {
-    background-color: #ccc;/*
-    -webkit-box-shadow:0 0 5px #666 inset;
-    -moz-box-shadow:0 0 5px #666 inset;
-    box-shadow:0 0 5px #666 inset;*/
+    background-color: #ccc;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 20%);
 }
 
 button { 
@@ -73,8 +78,17 @@ button {
     outline: none; 
     color: #fff; 
     cursor: pointer;
+    box-shadow: 0 9px #999;
+}
+button:hover {
+    background-color: #202785
 }
 
+button:active {
+  background-color: #3c4f83;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 #messages { 
     list-style-type: none; 
     margin: 5px; 
@@ -82,9 +96,12 @@ button {
 }
 #messages > li { 
     padding: 0.5rem 1rem;
+    overflow-wrap: break-word;
+    max-width: 80%;
     margin: 3px; 
     width: fit-content;
-    border-radius: 500px;
+    width: -moz-fit-content;
+    border-left: 5px solid;
 }
 .nym {
     font-size: 1rem;
@@ -93,24 +110,33 @@ button {
     text-decoration-thickness: 1px;
 }
 .textMsg {
-    font-size: 1.1rem;;
+    font-size: 1.1rem;
 }
 .myMsg {
     background-color: rgb(203, 238, 238);
     color: rgb(38, 80, 172);
     position: relative;
+    border-left-color: rgb(38, 80, 172);
     right: 0px;
 }
 .other {
-    background-color: rgb(99, 141, 138);
-    color: #fff;
+    background-color: rgb(212, 240, 238);
+    color: rgb(36, 78, 75);
+    border-left-color: rgb(36, 78, 75);
 }
     
 .red {
-    color: white;
-    background-color: rgb(170, 67, 67);
+    color: rgb(197, 54, 54);
+    background-color: white;
+    border-left-color: rgb(197, 54, 54);
 }
 .green {
     color: white;
     background-color: darkgreen;
+}
+
+.black {
+    color: #fff;
+    background-color: black;
+    border-left: none;
 }

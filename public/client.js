@@ -1,24 +1,72 @@
+//Client side JS: will send chat message and recieve other events
+
 //Make back connection
 const socket = io.connect('http://localhost:4000');
+
+//Quering the DOM
 var messages = document.getElementById('messages');
 var form = document.getElementById('form');
 var input = document.getElementById('input');
 var btn = document.getElementById('send');
 var people = document.getElementById('top-left');
 
-const username = prompt('Enter your name here:');
+//Username prompt
+let username = '';
+do {
+    username = prompt('Enter your name here:');
+} while(username == '' || username == null);
 
-//Emit messages
-btn.addEventListener('click', function() {
-    socket.emit('client message', {
-        message: input.value,
-        name: username
-    });
-    console.log(input.value);
-    input.value = '';
+//Sending username to server
+socket.emit('enter-chat', {
+    name: username,
 });
 
-//Listen for incoming messages
+//In case of already exist problem
+//Prompt user to enter again a new name
+socket.on('already exist', function(data) {
+    console.log('request for new username');
+    console.log(data.name, username, data.id, socket.id);
+    if((data.name == username) && (data.id == socket.id) )
+    {
+        do {
+            username = prompt('Name already taken, enter a new name:');
+        } while(username == '' || username == null);
+
+        socket.emit('enter-chat', {
+            name: username,
+        });
+    }
+});
+
+//Sending message to server
+btn.addEventListener('click', function() {
+    if(input.value != ''){
+        socket.emit('client message', {
+            message: input.value,
+            name: username
+        });
+        console.log(input.value);
+        input.value = '';
+    }
+});
+
+//For a new user joined
+socket.on('enter-chat', function(data) {
+    var item = document.createElement('li');
+    item.classList.add('red');
+    item.textContent = `'${data.name}' entered the chat`;
+    messages.appendChild(item);
+});
+
+//For a user left the chat
+socket.on('left-chat', function(data) {
+    var item = document.createElement('li');
+    item.classList.add('black');
+    item.textContent = `'${data.name}' left the chat`;
+    messages.appendChild(item);
+});
+
+//Incoming transmission message from server
 socket.on('client message', function(data) {
     var item = document.createElement('li');
     var pseudonym = document.createElement('div');
@@ -41,10 +89,9 @@ socket.on('client message', function(data) {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
-//For clients
+//Incoming data for number of clients online
 socket.on('client-no', function(data) {
-    people.textContent = `Online: ${data.number}`;
-    if(data.number == 1) people.classList.add('red');
-    else people.classList.add('green');
+    people.textContent = `Active: ${data.number}`;
+    people.classList.add('black');
     console.log('Updated client info!');
-})
+});

@@ -12,7 +12,7 @@ $ npm install nodemon -g
 
 Fork this repo and clone it
 ```bash
-$ git clone https://github.com/<Your User Name>/simple-form-expressjs.git
+$ git clone https://github.com/<Your User Name>/simple-chatapp-socketio.git
 ```
 
 Open the folder and install the dependencies
